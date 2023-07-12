@@ -1,0 +1,67 @@
+version: '3'
+
+services:
+  mariadb:
+    container_name: mariadb
+    image: mariadb
+    build: ./requirements/mariadb
+    restart: always
+    volumes:
+      - dbdata:/var/lib/mysql
+    networks:
+      - intra
+    tty: true
+    env_file:
+      - .env
+    expose:
+      - '3306'
+
+  wordpress:
+    container_name: wordpress
+    image: wordpress
+    build: ./requirements/wordpress
+    restart: always
+    volumes:
+      - wpdata:/var/www/html
+    networks:
+      - intra
+    tty: true
+    env_file:
+      - .env
+    expose:
+      - '9000'
+
+  nginx:
+    container_name: nginx
+    image: nginx
+    build: ./requirements/nginx
+    restart: always
+    volumes:
+      - wpdata:/var/www/html
+    networks:
+      - intra
+    tty: true
+    env_file:
+      - .env
+    ports:
+      - '443:443'
+
+networks:
+  intra:
+    driver: bridge
+
+volumes:
+  dbdata:
+    driver: local
+    driver_opts:
+      type: none
+      # device: /Users/jihyukim/data/mysql
+      device: /Users/jihyun/vol/mysql
+      o: bind
+  wpdata:
+    driver: local
+    driver_opts:
+      type: none
+      # device: /Users/jihyukim/data/wordpress
+      device: /Users/jihyun/vol/wordpress
+      o: bind
