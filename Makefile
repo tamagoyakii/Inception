@@ -1,7 +1,7 @@
 COMPOSE_FILE = ./srcs/docker-compose.yml
 IMAGES = nginx mariadb wordpress
 VOLUMES = srcs_wpdata srcs_dbdata
-DATA = /Users/jihyun/vol
+DATA = /home/jihyukim/vol
 # DATA = /Users/jihyukim/data
 
 RED = \033[0;31m
@@ -12,13 +12,13 @@ RESET = \033[0m
 # @mkdir -p /Users/jihyukim/data/mysql
 
 all :
-	@mkdir -p /Users/jihyun/vol/wordpress
-	@mkdir -p /Users/jihyun/vol/mysql
-	@docker-compose -f $(COMPOSE_FILE) up --build -d
+	@mkdir -p /home/jihyukim/vol/wordpress
+	@mkdir -p /home/jihyukim/vol/mysql
+	@docker compose -f $(COMPOSE_FILE) up --build -d
 	@echo "$(BLUE)🐳 docker compose up$(RESET)"
 
 clean :
-	@docker-compose -f $(COMPOSE_FILE) down
+	@docker compose -f $(COMPOSE_FILE) down
 	@echo "$(RED)🐳 docker compose down$(RESET)"
 
 fclean :
