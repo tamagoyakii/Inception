@@ -2,16 +2,15 @@ COMPOSE_FILE = ./srcs/docker-compose.yml
 IMAGES = nginx mariadb wordpress
 VOLUMES = srcs_wpdata srcs_dbdata
 DATA = /home/jihyukim/vol
-# DATA = /Users/jihyukim/data
+# DATA = /Users/jihyun/vol
 
 RED = \033[0;31m
 BLUE = \033[0;34m
 RESET = \033[0m
 
-# @mkdir -p /Users/jihyukim/data/wordpress
-# @mkdir -p /Users/jihyukim/data/mysql
-
 all :
+# @mkdir -p /Users/jihyun/vol/wordpress
+# @mkdir -p /Users/jihyun/vol/mysql
 	@mkdir -p /home/jihyukim/vol/wordpress
 	@mkdir -p /home/jihyukim/vol/mysql
 	@docker compose -f $(COMPOSE_FILE) up --build -d
