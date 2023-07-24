@@ -55,13 +55,13 @@ volumes:
     driver: local
     driver_opts:
       type: none
-      device: /home/jihyukim/vol/mysql
-      # device: /Users/jihyun/vol/mysql
+      # device: /Users/jihyun/data/mysql
+      device: /home/jihyukim/data/mysql
       o: bind
   wpdata:
     driver: local
     driver_opts:
       type: none
-      device: /home/jihyukim/vol/wordpress
-      # device: /Users/jihyun/vol/wordpress
+      # device: /Users/jihyun/data/wordpress
+      device: /home/jihyukim/data/wordpress
       o: bind
