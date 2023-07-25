@@ -2,7 +2,7 @@ FROM debian:bullseye
 
 RUN apt-get -y update && \
 		apt-get -y upgrade && \
-    apt-get -y install wget curl php7.4 php-cli php-fpm php-mysql mariadb-client sendmail && \
+    apt-get -y install wget curl php7.4 php-cli php-fpm php-mysql mariadb-client && \
     rm -rf /var/lib/apt/lists/*
 # 성공!
 
