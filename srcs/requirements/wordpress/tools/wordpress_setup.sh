@@ -9,8 +9,5 @@ if [ ! -f "/var/www/html/wordpress/index.php" ]; then
 	wp plugin update --all --path=/var/www/html --allow-root
 fi
 
-# wordpress 파일 및 디렉토리 권한을 뒙 서버의 사용자와 그룹에 소유
-# chown -R www-data:www-data /var/www/
-
 # php-fpm을 포그라운드로 실행하여 웹 서버와 wordpress 동작
 exec php-fpm7.4 -F
