@@ -13,9 +13,5 @@ RUN	openssl req -newkey rsa:4096 -days 365 -nodes -x509 \
 
 COPY ./conf/nginx.conf /etc/nginx/conf.d/default.conf
 
-# 포트 443을 노출
-# 보통 https 요청에 사용되는 포트로, SSL/TLS 암호화된 웹 서버를 실행할 때 사용
-EXPOSE 443
-
 # nginx 웹 서버를 포그라운드로 실행
 ENTRYPOINT ["nginx", "-g", "daemon off;"]
