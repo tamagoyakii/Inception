@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # mysql 데이터베이스가 처음 실행되는 경우에만 실행
-if [ ! -d "/var/lib/mysql/mysql" ]; then
+if [ ! -d "/var/lib/mysql/wordpress" ]; then
 	service mariadb start
 
 	mysql -e "CREATE DATABASE IF NOT EXISTS $DB_NAME;"
@@ -14,8 +14,6 @@ if [ ! -d "/var/lib/mysql/mysql" ]; then
 	# root 사용자로 접속하여 스크립트가 종료되더라도 서버가 백그라운드로 실행되는 것을 방지
 	mysqladmin -uroot -p$DB_ROOT_PWD shutdown
 fi
-
-# chown -R mysql:mysql /run/mysqld
 
 # mysqld 서버를 포그라운드에서 실행 
 exec mysqld_safe
