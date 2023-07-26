@@ -15,7 +15,7 @@ if [ ! -d "/var/lib/mysql/mysql" ]; then
 	mysqladmin -uroot -p$DB_ROOT_PWD shutdown
 fi
 
-chown -R mysql:mysql /run/mysqld
+# chown -R mysql:mysql /run/mysqld
 
 # mysqld 서버를 포그라운드에서 실행 
 exec mysqld_safe
