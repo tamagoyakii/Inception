@@ -5,7 +5,6 @@ RUN apt-get -y update && \
     apt-get -y install wget curl php7.4 php-cli php-fpm php-mysql mariadb-client && \
     rm -rf /var/lib/apt/lists/*
 
-
 # wordpress CLI(Command Line Interface) 설치 및 업데이트
 RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar && \
 		chmod +x ./wp-cli.phar && \
