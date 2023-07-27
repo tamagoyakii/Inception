@@ -2,7 +2,7 @@ FROM debian:bullseye
 
 RUN apt-get -y update && \
 		apt-get -y upgrade && \
-    apt-get -y install wget curl php7.4 php-cli php-fpm php-mysql mariadb-client && \
+    apt-get -y install wget curl php7.4 php-cli php-fpm php-mysql mariadb-client tini && \
     rm -rf /var/lib/apt/lists/*
 
 # wordpress CLI(Command Line Interface) 설치 및 업데이트
@@ -22,4 +22,4 @@ RUN chmod +x ./wordpress_setup.sh
 # volume을 사용하는 경로. nginx에서 index.php를 찾을 수 있도록 함
 WORKDIR /var/www/html
 
-ENTRYPOINT ["/wordpress_setup.sh"]
+ENTRYPOINT ["/usr/bin/tini", "--", "/wordpress_setup.sh"]
